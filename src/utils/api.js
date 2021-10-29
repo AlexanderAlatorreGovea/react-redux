@@ -4,7 +4,7 @@ import { isObject } from "./helpers";
 function flattenPoll(poll) {
   return Object.keys(poll).reduce((flattenedPoll, key) => {
     const val = poll[key];
-
+    
     if (isObject(val)) {
       flattenedPoll[key + "Text"] = val.text;
       flattenedPoll[key + "Votes"] = val.votes;
