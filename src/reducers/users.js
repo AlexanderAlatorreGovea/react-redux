@@ -4,7 +4,7 @@ import { ADD_ANSWER } from "../actions/answers";
 
 export const users = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_USERS:
+    case RECEIVE_USERS: 
       return {
         ...state,
         ...action.users,
@@ -12,7 +12,7 @@ export const users = (state = {}, action) => {
     case ADD_POLL:
       const poll = action.poll;
       const { author, id } = poll;
-
+      
       return {
         ...state,
         [author]: {

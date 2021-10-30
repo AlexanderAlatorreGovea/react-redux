@@ -1,4 +1,4 @@
-export let users = {
+export const users = {
   sarah_edo: {
     id: "sarah_edo",
     name: "Sarah Drasner",
@@ -34,7 +34,7 @@ export let users = {
   },
 };
 
-export let polls = {
+export const polls = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
     question: "Who is the best basketball player to ever live?",
@@ -169,94 +169,73 @@ export let polls = {
   },
 };
 
-function generateUID() {
-  return (
-    Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15)
-  );
-}
+const state = {
+  sarah_edo: {
+    id: "sarah_edo",
+    name: "Sarah Drasner",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    answers: [
+      "8xf0y6ziyjabvozdd253nd",
+      "6ni6ok3ym7mf1p33lnez",
+      "am8ehyc8byjqgar0jgpub9",
+      "loxhs1bqm25b708cmbf3g",
+    ],
+    polls: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
+  },
+  tylermcginnis: {
+    id: "tylermcginnis",
+    name: "Tyler McGinnis",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/tyler.jpg",
+    answers: ["vthrdm985a262al8qx3do", "xj352vofupe1dqz9emx13r"],
+    polls: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
+  },
+  dan_abramov: {
+    id: "dan_abramov",
+    name: "Dan Abramov",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    answers: [
+      "xj352vofupe1dqz9emx13r",
+      "vthrdm985a262al8qx3do",
+      "6ni6ok3ym7mf1p33lnez",
+    ],
+    polls: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
+  },
+};
 
-export function _getUsers() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...users }), 1000);
-  });
-}
+const poll = {
+  question: "safasd",
+  aText: "a",
+  aVotes: [],
+  bText: "b",
+  bVotes: [],
+  cText: "c",
+  cVotes: [],
+  dText: "d",
+  dVotes: [],
+  author: "tylermcginnis",
+  id: "r0tlbo9y4zmumh0yezi9h9",
+  timestamp: 1635622533361,
+};
 
-export function _getPolls() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...polls }), 1000);
-  });
-}
+const { author, id } = poll;
 
-function formatPoll(poll) {
-  return {
-    ...poll,
-    id: generateUID(),
-    timestamp: Date.now(),
-    a: {
-      text: poll.a,
-      votes: [],
-    },
-    b: {
-      text: poll.b,
-      votes: [],
-    },
-    c: {
-      text: poll.c,
-      votes: [],
-    },
-    d: {
-      text: poll.d,
-      votes: [],
-    },
-  };
-}
+const newState = {
+  ...state,
+  [author]: {
+    ...state,
+    polls: state[author].polls.concat([id]),
+  },
+};
 
-export function _savePoll(poll) {
-  return new Promise((res, rej) => {
-    const formattedPoll = formatPoll(poll);
+console.log(newState);
 
-    setTimeout(() => {
-      polls = {
-        ...polls,
-        [formattedPoll.id]: formattedPoll,
-      };
+// const poll = action.poll;
+// const { author, id } = poll;
 
-      res(formattedPoll);
-    }, 1000);
-  });
-}
-
-export function _savePollAnswer({ authedUser, id, answer }) {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      const user = users[authedUser];
-      const poll = polls[id];
-
-      users = {
-        ...users,
-        [authedUser]: {
-          ...user,
-          answers: {
-            ...user.answers,
-            [id]: answer,
-          },
-        },
-      };
-
-      polls = {
-        ...polls,
-        [id]: {
-          ...poll,
-          [answer]: {
-            ...poll[answer],
-            votes: poll[answer].votes.concat([authedUser]),
-          },
-        },
-      };
-
-      res();
-    }, 500);
-  });
-}
-
+// return {
+//   ...state,
+//   [author]: {
+//     ...state[author],
+//     polls: state[author].polls.concat([id]),
+//   },
+// };

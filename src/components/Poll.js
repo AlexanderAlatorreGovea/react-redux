@@ -58,7 +58,7 @@ const Poll = () => {
           const count = poll[key[0] + "Votes"].length;
           const votesPercentage = getPercentage(count, totalVotes);
 
-          return (
+          return ( 
             <li
               onClick={() => handleAnswer(key[0])}
               className={`option ${vote === key[0] ? "chosen" : ""}`}
