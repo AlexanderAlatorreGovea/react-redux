@@ -17,14 +17,18 @@ export const users = (state = {}, action) => {
         ...state,
         [author]: {
           ...state[author],
-          polls: state[author].polls.concat(id),
+          polls: state[author].polls.concat([id]),
         },
       };
     case ADD_ANSWER:
       const user = state[action.authedUser];
+
       return {
-        ...user,
-        answers: users.answers.concat([action.id]),
+        ...state,
+        [action.authedUser]: {
+          ...user,
+          answers: user.answers.concat([action.id]),
+        },
       };
     default:
       return state;

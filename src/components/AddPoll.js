@@ -3,7 +3,6 @@ import { handlePoll as handeAddPoll } from "../actions/polls";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-
 export default function AddPoll() {
   const history = useHistory();
   const dispatch = useDispatch();
