@@ -220,12 +220,12 @@ const poll = {
 const { author, id } = poll;
 
 const newState = {
-  ...state,
-  [author]: {
     ...state,
-    polls: state[author].polls.concat([id]),
-  },
-};
+    [author]: {
+      ...state[author],
+      polls: state[author].polls.concat([id]),
+    },
+  }
 
 console.log(newState);
 
@@ -234,8 +234,89 @@ console.log(newState);
 
 // return {
 //   ...state,
-//   [author]: {
+//   [author]: { 
 //     ...state[author],
 //     polls: state[author].polls.concat([id]),
 //   },
 // };
+
+const concatenated = {
+  sarah_edo: {
+    id: "sarah_edo",
+    name: "Sarah Drasner",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    answers: [
+      "8xf0y6ziyjabvozdd253nd",
+      "6ni6ok3ym7mf1p33lnez",
+      "am8ehyc8byjqgar0jgpub9",
+      "loxhs1bqm25b708cmbf3g",
+    ],
+    polls: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
+  },
+  tylermcginnis: {
+    sarah_edo: {
+      id: "sarah_edo",
+      name: "Sarah Drasner",
+      avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+      answers: [Object],
+      polls: [Object],
+    },
+    tylermcginnis: {
+      id: "tylermcginnis",
+      name: "Tyler McGinnis",
+      avatarURL: "https://tylermcginnis.com/would-you-rather/tyler.jpg",
+      answers: [Object],
+      polls: [Object],
+    },
+    dan_abramov: {
+      id: "dan_abramov",
+      name: "Dan Abramov",
+      avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+      answers: [Object],
+      polls: [Object],
+    },
+    polls: [
+      "loxhs1bqm25b708cmbf3g",
+      "vthrdm985a262al8qx3do",
+      "r0tlbo9y4zmumh0yezi9h9",
+    ],
+  },
+  dan_abramov: {
+    id: "dan_abramov",
+    name: "Dan Abramov",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    answers: [
+      "xj352vofupe1dqz9emx13r",
+      "vthrdm985a262al8qx3do",
+      "6ni6ok3ym7mf1p33lnez",
+    ],
+    polls: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
+  },
+};
+
+const noConcat = {
+  sarah_edo: {
+    id: "sarah_edo",
+    name: "Sarah Drasner",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    answers: [
+      "8xf0y6ziyjabvozdd253nd",
+      "6ni6ok3ym7mf1p33lnez",
+      "am8ehyc8byjqgar0jgpub9",
+      "loxhs1bqm25b708cmbf3g",
+    ],
+    polls: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
+  },
+  tylermcginnis: {},
+  dan_abramov: {
+    id: "dan_abramov",
+    name: "Dan Abramov",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    answers: [
+      "xj352vofupe1dqz9emx13r",
+      "vthrdm985a262al8qx3do",
+      "6ni6ok3ym7mf1p33lnez",
+    ],
+    polls: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
+  },
+};

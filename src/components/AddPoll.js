@@ -37,13 +37,14 @@ export default function AddPoll() {
   };
 
   const isDisabled = () => {
-    return (
+    const hasEmptyInputField =
       question === "" ||
       options.a === "" ||
       options.b === "" ||
       options.c === "" ||
-      options.d === ""
-    );
+      options.d === "";
+
+    return hasEmptyInputField;
   };
 
   return (
