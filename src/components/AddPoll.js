@@ -36,7 +36,7 @@ export default function AddPoll() {
     });
   };
 
-  const isDisabled = () => {
+  const isButtonDisabled = () => {
     const hasEmptyInputField =
       question === "" ||
       options.a === "" ||
@@ -104,7 +104,7 @@ export default function AddPoll() {
         type="text"
       />
 
-      <button className="btn" type="submit" disabled={isDisabled()}>
+      <button className="btn" type="submit" disabled={isButtonDisabled()}>
         Submit
       </button>
     </form>

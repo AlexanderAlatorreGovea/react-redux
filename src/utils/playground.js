@@ -220,12 +220,12 @@ const poll = {
 const { author, id } = poll;
 
 const newState = {
-    ...state,
-    [author]: {
-      ...state[author],
-      polls: state[author].polls.concat([id]),
-    },
-  }
+  ...state,
+  [author]: {
+    ...state[author],
+    polls: state[author].polls.concat([id]),
+  },
+};
 
 console.log(newState);
 
@@ -234,7 +234,7 @@ console.log(newState);
 
 // return {
 //   ...state,
-//   [author]: { 
+//   [author]: {
 //     ...state[author],
 //     polls: state[author].polls.concat([id]),
 //   },
@@ -320,3 +320,28 @@ const noConcat = {
     polls: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
 };
+
+const initialState = {
+  name: "alexander",
+  lastName: "govea",
+  items_to_complete: ["sleep", "code", "repeat"],
+};
+
+const { name } = initialState;
+
+console.log({
+  ...initialState,
+  items_to_complete: initialState.items_to_complete.concat("item"),
+});
+
+const DEFAULT_NAME = "alexander";
+
+function x(param) {
+  const { party, youAre } = param;
+  console.log(youAre);
+}
+
+x({
+  party: "pooper",
+  youAre: "a partyPooper",
+});
