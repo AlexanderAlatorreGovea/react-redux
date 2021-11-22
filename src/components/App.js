@@ -22,19 +22,18 @@ export default function App() {
       <div className="container">
         {!isLoading && (
           <div>
-
-<Route path='/' exact>
-                <Dashboard />
-              </Route>
-              <Route path='/leaderboard'>
-                <LeaderBoard />
-              </Route>
-              <Route path='/polls/:id'>
-                <Poll />
-              </Route>
-              <Route path='/add'>
-                <AddPoll />
-              </Route>
+            <Route path="/" exact>
+              <Dashboard />
+            </Route>
+            <Route path="/leaderboard">
+              <LeaderBoard />
+            </Route>
+            <Route path="/polls/:id">
+              <Poll />
+            </Route>
+            <Route path="/add">
+              <AddPoll />
+            </Route>
           </div>
         )}
       </div>
