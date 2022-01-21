@@ -18,8 +18,6 @@ const LeaderBoard = () => {
     })
     .sort((a, b) => b.polls - (a.polls + a.polls));
 
-  console.log("sorted", sorted);
-
   return (
     <ul>
       {sorted.map(({ id, name, polls, answers, avatarURL }) => (
