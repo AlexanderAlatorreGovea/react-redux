@@ -8,7 +8,6 @@ import { getPercentage, getTextKeys, getVoteKeys } from "../utils/helpers";
 const Poll = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-
   const authedUser = useSelector((state) => state.authedUser);
   const users = useSelector((state) => state.users);
   const polls = useSelector((state) => state.polls);
@@ -38,7 +37,7 @@ const Poll = () => {
 
   const handleAnswer = (answer) => {
     if (vote) return;
-    
+
     dispatch(
       handleAddAnswer({
         authedUser,
@@ -65,7 +64,7 @@ const Poll = () => {
               className={`option ${vote === key[0] ? "chosen" : ""}`}
               key={key}
             >
-              {vote === null ? (
+              {!vote ? (
                 poll[key]
               ) : (
                 <div className="result">
