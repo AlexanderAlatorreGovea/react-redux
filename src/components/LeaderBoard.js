@@ -6,7 +6,7 @@ const LeaderBoard = () => {
 
   const sorted = Object.keys(users)
     .map((id) => {
-      const { name, avatarURL, polls } = users[id];
+      const { name = "", avatarURL = "", polls = [] } = users[id];
 
       return {
         id,
